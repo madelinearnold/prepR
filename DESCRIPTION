@@ -1,0 +1,10 @@
+Package: prepR
+Title: Data Prep for Grad Div IR Team
+Version: 0.0.0.9000
+Authors@R: 
+    person("Madeline", "Arnold", , "madeline_arnold@berkeley.edu", role = c("aut", "cre"))
+Description: This package contains functions for common data cleaning and preparation steps used by UC Berkeley Graduate Division's Institutional Research Team. Tasks include preparing survey response and metadata, processing academic plan information, and summarizing data for visualization and analysis.
+License: use_mit_license()
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
