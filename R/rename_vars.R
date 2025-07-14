@@ -20,6 +20,7 @@
 #' @importFrom dplyr filter rename
 #' @importFrom rlang .data
 #' @family data manipulation functions
+#' @export
 #' @examples
 #' # Create a sample data frame
 #' df_original <- data.frame(

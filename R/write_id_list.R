@@ -22,6 +22,7 @@
 #' @importFrom readr write_csv
 #' @importFrom rlang .data
 #' @family data export functions
+#' @export
 #' @examples
 #' # Create a sample data frame
 #' df_ids <- data.frame(

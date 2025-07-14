@@ -11,6 +11,7 @@
 #' @return A data frame with the specified number of initial rows removed.
 #' @importFrom dplyr slice
 #' @family data cleaning functions
+#' @export
 #' @examples
 #' # Create a sample data frame with header rows
 #' df_raw <- data.frame(

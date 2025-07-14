@@ -24,6 +24,7 @@
 #' @importFrom dplyr full_join bind_cols coalesce
 #' @importFrom purrr map_dfc
 #' @family data manipulation functions
+#' @export
 #' @examples
 #' # Create sample data frames
 #' df1 <- data.frame(

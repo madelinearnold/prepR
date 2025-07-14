@@ -21,7 +21,7 @@ academic column.}
 new, consolidated academic column.}
 }
 \value{
-A transformed dataframe with the two academic columns pivoted into a
+A transformed data frame with the two academic columns pivoted into a
 single new column, \code{new_col_name}, and an additional \code{new_col_name_source}
 column indicating the original source column.
 }
@@ -33,7 +33,7 @@ academic master's en route to a PhD, and removes the second value if it's
 identical to the first. Placeholder or empty values are also filtered out.
 }
 \examples{
-# Create a sample dataframe
+# Create a sample data frame
 df_acad <- data.frame(
   ID = 1:5,
   AcademicPlan1 = c("History MA", "Economics PhD", "Physics PhD"),

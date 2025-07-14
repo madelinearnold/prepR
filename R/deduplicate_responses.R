@@ -17,6 +17,7 @@
 #' @importFrom dplyr count filter arrange distinct bind_rows
 #' @importFrom rlang .data
 #' @family data manipulation functions
+#' @export
 #' @examples
 #' # Create a sample data frame
 #' df <- data.frame(

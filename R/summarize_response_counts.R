@@ -36,6 +36,7 @@
 #' @importFrom purrr discard
 #' @importFrom rlang .data
 #' @family data analysis functions
+#' @export
 #' @examples
 #' # Create a sample data frame
 #' df_counts <- data.frame(

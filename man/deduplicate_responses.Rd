@@ -7,7 +7,7 @@
 deduplicate_responses(data, id_col = "UID", progress_col = "Progress")
 }
 \arguments{
-\item{data}{A dataframe to be deduplicated.}
+\item{data}{A data frame to be deduplicated.}
 
 \item{id_col}{A character string specifying the name of the ID column.
 Defaults to "UID".}
@@ -18,16 +18,16 @@ highest value in this column will be retained. Defaults to "Progress".
 This column is treated as numeric for comparison.}
 }
 \value{
-A deduplicated dataframe.
+A deduplicated data frame.
 }
 \description{
-This function takes a dataframe and deduplicates rows based on a specified
+This function takes a data frame and deduplicates rows based on a specified
 ID column. For any duplicated IDs, it keeps only one unique row,
 prioritizing the row with the highest value in a specified progress column.
 Rows with missing IDs are excluded from the output.
 }
 \examples{
-# Create a sample dataframe
+# Create a sample data frame
 df <- data.frame(
   UID = c("123", "124", "124", "125", "126", NA, "128"),
   Progress = c(100, 90, 15, 85, 100, 10, 95),

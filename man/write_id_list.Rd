@@ -13,7 +13,7 @@ write_id_list(
 )
 }
 \arguments{
-\item{data}{A dataframe containing response data, expected to have a
+\item{data}{A data frame containing response data, expected to have a
 'SurveyAdminYear' column and the specified \code{id_col}.}
 
 \item{survey_admin_year}{A numeric value specifying the survey administration
@@ -38,7 +38,7 @@ to filters in external systems like Cal Answers to pull corresponding
 demographic or academic data.
 }
 \examples{
-# Create a sample dataframe
+# Create a sample data frame
 df_ids <- data.frame(
   UID = c("A1", "B2", "A1", "C3", "D4", "B2"),
   SurveyAdminYear = c(2023, 2023, 2024, 2023, 2024, 2024),

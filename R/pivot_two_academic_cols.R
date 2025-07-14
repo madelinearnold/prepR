@@ -23,6 +23,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom rlang .data sym
 #' @family data manipulation functions
+#' @export
 #' @examples
 #' # Create a sample data frame
 #' df_acad <- data.frame(

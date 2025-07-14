@@ -44,7 +44,7 @@ completeness. Missing values in x are filled with matching values from y.
 This function was adapted from https://alistaire.rbind.io/blog/coalescing-joins/
 }
 \examples{
-# Create sample dataframes
+# Create sample data frames
 df1 <- data.frame(
   ID = c(1, 2, 3),
   Name = c("Priya", "Omar", "Sofia"),
@@ -59,9 +59,9 @@ df2 <- data.frame(
   City = c(NA, "Cairo", "Tokyo")
 )
 
-print("Dataframe 1:")
+print("Data frame 1:")
 print(df1)
-print("Dataframe 2:")
+print("Data frame 2:")
 print(df2)
 
 # Perform a coalescing full join

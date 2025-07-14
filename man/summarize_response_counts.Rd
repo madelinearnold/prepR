@@ -18,7 +18,7 @@ summarize_response_counts(
 )
 }
 \arguments{
-\item{data}{A dataframe containing response data. It is expected to have
+\item{data}{A data frame containing response data. It is expected to have
 columns like 'ITEM_PARENT_ID', 'ITEM_NAME', 'ITEM_TYPE', 'response', and 'rowid'.}
 
 \item{acad_group_var}{An optional character string specifying the name of an
@@ -49,13 +49,13 @@ when no \code{time_group_var} is supplied. Defaults to "Aggregated".}
 when no \code{time_group_var} is supplied. Defaults to "All years".}
 }
 \value{
-A dataframe with summarized response counts, including 'response',
+A data frame with summarized response counts, including 'response',
 'count', 'total', 'perc', 'ITEM_NAME', and standardized grouping columns
 ('acad_group_category', 'acad_group_value', 'demo_group_category',
 'demo_group_value', 'time_group_category', 'time_group_value').
 }
 \description{
-This function groups and summarizes response counts from a dataframe. It allows
+This function groups and summarizes response counts from a data frame. It allows
 for flexible grouping by any combination of academic, demographic, and/or time
 variables. If no grouping variables are supplied, you can supply strings to add
 to the output grouping columns (e.g., "UC Berkeley" for a campus-wide summary).
@@ -63,7 +63,7 @@ If both grouping variables and category or value strings are supplied, the
 grouping variables will supersede to determine the output.
 }
 \examples{
-# Create a sample dataframe
+# Create a sample data frame
 df_counts <- data.frame(
   rowid = 1:10,
   ITEM_PARENT_ID = c("Q1", "Q1", "Q1", "Q2", "Q2", "Q1", "Q1", "Q2", "Q2", "Q1"),

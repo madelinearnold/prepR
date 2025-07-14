@@ -2,18 +2,18 @@
 % Please edit documentation in R/drop_initial_rows.R
 \name{drop_initial_rows}
 \alias{drop_initial_rows}
-\title{Drop Initial Rows from a Dataframe}
+\title{Drop Initial Rows from a Data Frame}
 \usage{
 drop_initial_rows(data, skip_rows = 2)
 }
 \arguments{
-\item{data}{A dataframe from which to drop initial rows.}
+\item{data}{A data frame from which to drop initial rows.}
 
 \item{skip_rows}{A numeric value indicating the number of rows to skip
 from the beginning of the data frame. Defaults to 2.}
 }
 \value{
-A dataframe with the specified number of initial rows removed.
+A data frame with the specified number of initial rows removed.
 }
 \description{
 This function removes a specified number of initial rows from a data frame.
