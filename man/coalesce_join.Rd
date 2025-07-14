@@ -88,6 +88,7 @@ print(left_coalesced_df)
 }
 \seealso{
 Other data manipulation functions: 
+\code{\link{add_completeness_score}()},
 \code{\link{deduplicate_responses}()},
 \code{\link{pivot_two_academic_cols}()},
 \code{\link{rename_vars}()}

@@ -66,6 +66,7 @@ print(pivoted_df_placeholder)
 }
 \seealso{
 Other data manipulation functions: 
+\code{\link{add_completeness_score}()},
 \code{\link{coalesce_join}()},
 \code{\link{deduplicate_responses}()},
 \code{\link{rename_vars}()}

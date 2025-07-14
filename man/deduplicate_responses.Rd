@@ -53,6 +53,7 @@ print(deduplicated_df2)
 }
 \seealso{
 Other data manipulation functions: 
+\code{\link{add_completeness_score}()},
 \code{\link{coalesce_join}()},
 \code{\link{pivot_two_academic_cols}()},
 \code{\link{rename_vars}()}
