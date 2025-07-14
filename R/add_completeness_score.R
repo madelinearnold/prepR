@@ -12,7 +12,7 @@
 #'   other variables indicating completeness.
 #' @param new_col_name A character string specifying the name of the new column
 #'   to be created, which will store the calculated non-NA count.
-#'   Defaults to "completeness_count".
+#'   Defaults to "completeness_score".
 #'
 #' @return The input data frame with an additional column containing the sum of
 #'   non-NA values for the specified columns.
@@ -62,7 +62,7 @@
 #' # )
 #' # print("Deduplicated result:")
 #' # print(deduplicated_result)
-add_completeness_score <- function(data, columns_to_sum, new_col_name = "completeness_count") {
+add_completeness_score <- function(data, columns_to_sum, new_col_name = "completeness_score") {
   data_with_progress <- data |>
     mutate(!!sym(new_col_name) := rowSums(across(all_of(columns_to_sum), ~ !is.na(.))))
   return(data_with_progress)
