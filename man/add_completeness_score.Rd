@@ -7,7 +7,7 @@
 add_completeness_score(
   data,
   columns_to_sum,
-  new_col_name = "completeness_count"
+  new_col_name = "completeness_score"
 )
 }
 \arguments{
@@ -19,7 +19,7 @@ other variables indicating completeness.}
 
 \item{new_col_name}{A character string specifying the name of the new column
 to be created, which will store the calculated non-NA count.
-Defaults to "completeness_count".}
+Defaults to "completeness_score".}
 }
 \value{
 The input data frame with an additional column containing the sum of

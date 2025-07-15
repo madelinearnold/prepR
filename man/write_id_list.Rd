@@ -6,59 +6,82 @@
 \usage{
 write_id_list(
   data,
-  survey_admin_year,
   id_col,
+  filter_col = NULL,
+  filter_value = NULL,
   path_to_directory =
     "/Volumes/Secure/analysis/graduate-experience/Cumulative data prep/data/ID lists/"
 )
 }
 \arguments{
-\item{data}{A data frame containing response data, expected to have a
-'SurveyAdminYear' column and the specified \code{id_col}.}
-
-\item{survey_admin_year}{A numeric value specifying the survey administration
-year to filter the data by.}
+\item{data}{A data frame expected to have the specified \code{id_col}. Also
+expected to have \code{filter_col} if provided.}
 
 \item{id_col}{A character string specifying the name of the column that
 contains the unique identifiers (e.g., "UID", "StudentID").}
+
+\item{filter_col}{An optional character string specifying a column to filter
+by. \strong{Must be used with \code{filter_value}}. Defaults to \code{NULL}.}
+
+\item{filter_value}{An optional value to filter for in the \code{filter_col}.
+\strong{Must be used with \code{filter_col}}. Defaults to \code{NULL}.}
 
 \item{path_to_directory}{A character string specifying the directory path
 where the CSV file should be saved. Defaults to
 "/Volumes/Secure/analysis/graduate-experience/Cumulative data prep/data/ID lists/".}
 }
 \value{
-Invisibly returns the path to the written CSV file. The function's
-primary effect is the creation of a CSV file at the specified path.
+The function's primary effect is the creation of a CSV file at the
+specified path. It also returns the ID list tibble.
 }
 \description{
-This function takes input response data, filters it by a specified survey
-administration year, extracts a list of distinct IDs from a given ID column,
-and writes this list to a CSV file. This ID list can then be used as input
-to filters in external systems like Cal Answers to pull corresponding
-demographic or academic data.
+This function takes input data, extracts a list of distinct IDs from
+a given ID column, and writes this list to a CSV file. This ID list can then
+be used as input to filters in external systems like Cal Answers to pull
+corresponding demographic or academic data. Optionally, this function can
+filter the data by a specified filter column and filter value before
+extracting the IDs, and append the filter value as a file name suffix.
 }
 \examples{
+# Load required packages for example
+library(readr)
+
 # Create a sample data frame
 df_ids <- data.frame(
   UID = c("A1", "B2", "A1", "C3", "D4", "B2"),
   SurveyAdminYear = c(2023, 2023, 2024, 2023, 2024, 2024),
   Response = c("Yes", "No", "Yes", "Maybe", "No", "Yes")
 )
+temp_dir <- tempdir() # Create a temporary directory for output files
 
-# Example: Write a list of UIDs for 2023 to a temporary file
-# In a real scenario, you would specify a meaningful directory.
-temp_dir <- tempdir()
-write_id_list(df_ids,
-  survey_admin_year = 2023,
+# --- Example 1: Filter by a specific value ---
+# This will create 'UID_list_2024.csv' by filtering SurveyAdminYear for 2024.
+list_2024 <- write_id_list(
+  data = df_ids,
+  id_col = "UID",
+  filter_col = "SurveyAdminYear",
+  filter_value = 2024,
+  path_to_directory = temp_dir
+)
+
+# Verify the returned tibble (should contain distinct UIDs from 2024)
+print(list_2024)
+
+# --- Example 2: No filtering (get all distinct IDs) ---
+# filter_col and filter_value are omitted, so no filtering is applied.
+# This will create 'UID_list.csv'.
+list_all <- write_id_list(
+  data = df_ids,
   id_col = "UID",
   path_to_directory = temp_dir
 )
 
-# Verify the file was created (optional)
-list.files(temp_dir)
+# Verify the returned tibble (should contain all distinct UIDs)
+print(list_all)
 
-# Clean up the temporary file (optional)
-file.remove(file.path(temp_dir, "UID_list_2023.csv"))
+# Clean up the temporary files
+file.remove(file.path(temp_dir, "UID_list_2024.csv"))
+file.remove(file.path(temp_dir, "UID_list.csv"))
 
 }
 \concept{data export functions}
