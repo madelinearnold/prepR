@@ -21,6 +21,9 @@ It is particularly useful for cleaning up raw data exports, such as those
 from Qualtrics, which often include non-data header rows at the beginning.
 }
 \examples{
+# Attach required libraries
+library(dplyr)
+
 # Create a sample data frame with header rows
 df_raw <- data.frame(
   V1 = c("Header 1", "Header 2", "Data_ID_1", "Data_ID_2", "Data_ID_3"),

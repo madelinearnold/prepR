@@ -33,6 +33,9 @@ academic master's en route to a PhD, and removes the second value if it's
 identical to the first. Placeholder or empty values are also filtered out.
 }
 \examples{
+# Attach required libraries
+library(dplyr, tidyr, rlang)
+
 # Create a sample data frame
 df_acad <- data.frame(
   ID = 1:5,

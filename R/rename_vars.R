@@ -17,11 +17,12 @@
 #'
 #' @return A data frame with the specified columns renamed according to the
 #'   `rename_df` mapping.
-#' @importFrom dplyr filter rename
-#' @importFrom rlang .data
 #' @family data manipulation functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, rlang)
+#'
 #' # Create a sample data frame
 #' df_original <- data.frame(
 #'   old_col_A = 1:3,

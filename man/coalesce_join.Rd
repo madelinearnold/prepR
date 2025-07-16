@@ -44,6 +44,9 @@ completeness. Missing values in x are filled with matching values from y.
 This function was adapted from https://alistaire.rbind.io/blog/coalescing-joins/
 }
 \examples{
+# Attach required libraries
+library(dplyr, purr)
+
 # Create sample data frames
 df1 <- data.frame(
   ID = c(1, 2, 3),

@@ -32,12 +32,12 @@
 #'   'count', 'total', 'perc', 'ITEM_NAME', and standardized grouping columns
 #'   ('acad_group_category', 'acad_group_value', 'demo_group_category',
 #'   'demo_group_value', 'time_group_category', 'time_group_value').
-#' @importFrom dplyr across all_of case_when count filter group_by mutate n_distinct summarise
-#' @importFrom purrr discard
-#' @importFrom rlang .data
 #' @family data analysis functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, purrr, rlang)
+#'
 #' # Create a sample data frame
 #' df_counts <- data.frame(
 #'   rowid = 1:10,

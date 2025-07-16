@@ -27,6 +27,9 @@ prioritizing the row with the highest value in a specified progress column.
 Rows with missing IDs are excluded from the output.
 }
 \examples{
+# Attach required libraries
+library(dplyr, rlang)
+
 # Create a sample data frame
 df <- data.frame(
   UID = c("123", "124", "124", "125", "126", NA, "128"),

@@ -44,7 +44,7 @@ extracting the IDs, and append the filter value as a file name suffix.
 }
 \examples{
 # Load required packages for example
-library(readr)
+library(dplyr, readr, rlang)
 
 # Create a sample data frame
 df_ids <- data.frame(

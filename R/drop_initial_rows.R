@@ -9,10 +9,12 @@
 #'   from the beginning of the data frame. Defaults to 2.
 #'
 #' @return A data frame with the specified number of initial rows removed.
-#' @importFrom dplyr slice
 #' @family data cleaning functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr)
+#'
 #' # Create a sample data frame with header rows
 #' df_raw <- data.frame(
 #'   V1 = c("Header 1", "Header 2", "Data_ID_1", "Data_ID_2", "Data_ID_3"),

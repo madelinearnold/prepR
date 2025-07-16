@@ -14,11 +14,12 @@
 #'   This column is treated as numeric for comparison.
 #'
 #' @return A deduplicated data frame.
-#' @importFrom dplyr count filter arrange distinct bind_rows
-#' @importFrom rlang .data
 #' @family data manipulation functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, rlang)
+#'
 #' # Create a sample data frame
 #' df <- data.frame(
 #'   UID = c("123", "124", "124", "125", "126", NA, "128"),

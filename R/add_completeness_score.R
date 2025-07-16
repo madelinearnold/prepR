@@ -16,11 +16,12 @@
 #'
 #' @return The input data frame with an additional column containing the sum of
 #'   non-NA values for the specified columns.
-#' @importFrom dplyr mutate across all_of
-#' @importFrom rlang .data sym
 #' @family data manipulation functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, rlang)
+#'
 #' # Create a sample data frame
 #' df_survey <- data.frame(
 #'   ID = c("A", "B", "C", "D", "E"),

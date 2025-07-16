@@ -21,14 +21,11 @@
 #'
 #' @return The function's primary effect is the creation of a CSV file at the
 #' specified path. It also returns the ID list tibble.
-#' @importFrom dplyr filter distinct
-#' @importFrom readr write_csv read_csv
-#' @importFrom rlang .data
 #' @family data export functions
 #' @export
 #' @examples
 #' # Load required packages for example
-#' library(readr)
+#' library(dplyr, readr, rlang)
 #'
 #' # Create a sample data frame
 #' df_ids <- data.frame(

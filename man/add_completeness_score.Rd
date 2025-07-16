@@ -33,6 +33,9 @@ particularly helpful for survey data where completeness can be inferred from
 the number of answered questions.
 }
 \examples{
+# Attach required libraries
+library(dplyr, rlang)
+
 # Create a sample data frame
 df_survey <- data.frame(
   ID = c("A", "B", "C", "D", "E"),

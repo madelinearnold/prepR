@@ -31,6 +31,9 @@ the old and new variable names within the mapping data frame. Rows with
 missing old or new names in the mapping data frame are ignored.
 }
 \examples{
+# Attach required libraries
+library(dplyr, rlang)
+
 # Create a sample data frame
 df_original <- data.frame(
   old_col_A = 1:3,

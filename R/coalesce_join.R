@@ -21,11 +21,12 @@
 #'
 #' @return A data frame resulting from the join, with common columns coalesced
 #' into single columns, retaining the first non-missing value.
-#' @importFrom dplyr full_join bind_cols coalesce
-#' @importFrom purrr map_dfc
 #' @family data manipulation functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, purr)
+#'
 #' # Create sample data frames
 #' df1 <- data.frame(
 #'   ID = c(1, 2, 3),

@@ -63,6 +63,9 @@ If both grouping variables and category or value strings are supplied, the
 grouping variables will supersede to determine the output.
 }
 \examples{
+# Attach required libraries
+library(dplyr, purrr, rlang)
+
 # Create a sample data frame
 df_counts <- data.frame(
   rowid = 1:10,

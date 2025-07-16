@@ -19,12 +19,12 @@
 #' @return A transformed data frame with the two academic columns pivoted into a
 #'   single new column, `new_col_name`, and an additional `new_col_name_source`
 #'   column indicating the original source column.
-#' @importFrom dplyr case_when filter mutate
-#' @importFrom tidyr pivot_longer
-#' @importFrom rlang .data sym
 #' @family data manipulation functions
 #' @export
 #' @examples
+#' # Attach required libraries
+#' library(dplyr, tidyr, rlang)
+#'
 #' # Create a sample data frame
 #' df_acad <- data.frame(
 #'   ID = 1:5,
