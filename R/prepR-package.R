@@ -9,5 +9,6 @@
 #' @importFrom readr read_csv write_csv
 #' @importFrom rlang .data sym
 #' @importFrom tidyr pivot_longer
+#' @importFrom tidyselect where
 ## usethis namespace: end
 NULL
