@@ -2,13 +2,17 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom cli cli_alert_info
 #' @importFrom dplyr across all_of arrange bind_cols bind_rows case_when
-#' @importFrom dplyr coalesce count distinct filter full_join group_by
-#' @importFrom dplyr mutate n_distinct rename slice summarise
+#' @importFrom dplyr coalesce count desc distinct filter full_join
+#' @importFrom dplyr group_by mutate n_distinct pull rename slice summarise
 #' @importFrom purrr discard map_dfc
 #' @importFrom readr read_csv write_csv
 #' @importFrom rlang .data sym
+#' @importFrom stringdist stringdistmatrix
+#' @importFrom tibble tibble
 #' @importFrom tidyr pivot_longer
-#' @importFrom tidyselect where
+#' @importFrom tidyselect everything where
+
 ## usethis namespace: end
 NULL
