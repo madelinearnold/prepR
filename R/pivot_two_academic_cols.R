@@ -23,7 +23,9 @@
 #' @export
 #' @examples
 #' # Attach required libraries
-#' library(dplyr, tidyr, rlang)
+#' library(dplyr)
+#' library(tidyr)
+#' library(rlang)
 #'
 #' # Create a sample data frame
 #' df_acad <- data.frame(

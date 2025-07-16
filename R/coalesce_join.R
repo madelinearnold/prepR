@@ -25,7 +25,8 @@
 #' @export
 #' @examples
 #' # Attach required libraries
-#' library(dplyr, purr)
+#' library(dplyr)
+#' library(purr)
 #'
 #' # Create sample data frames
 #' df1 <- data.frame(

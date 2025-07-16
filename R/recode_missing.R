@@ -13,7 +13,8 @@
 #'
 #' @examples
 #' # attach required libraries
-#' library(dplyr, tidyselect)
+#' library(dplyr)
+#' library(tidyselect)
 #'
 #' test_df <- data.frame(
 #'   q1 = c("A", "B", "N/A", "C"),

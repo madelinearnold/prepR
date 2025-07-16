@@ -12,7 +12,8 @@
 #'
 #' @examples
 #' # Attach required packages
-#' library(dplyr, rlang)
+#' library(dplyr
+#' library(rlang)
 #'
 #' # Create a sample data frame with extra white space
 #' messy_df <- data.frame(
