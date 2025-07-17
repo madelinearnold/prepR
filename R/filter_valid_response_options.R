@@ -45,17 +45,17 @@
 #'   INCLUDE = c(TRUE, FALSE, TRUE, TRUE, TRUE)
 #' )
 #'
-#' scale_filtered <- join_and_filter_valid_responses(
+#' scale_filtered <- filter_valid_response_options(
 #'    pivoted_responses = pivoted_by_response,
 #'    varinfo = varinfo,
 #'    scale_options = scale_options)
 #'
 #' # or exclude additional responses
-#' cleaned <- join_and_filter_valid_responses(
+#' cleaned <- filter_valid_response_options(
 #'   pivoted_by_response, varinfo, scale_options,
 #'   exclude_responses = c("Not applicable","Prefer not to say"))
 #'
-join_and_filter_valid_responses <- function(pivoted_responses, varinfo, scale_options) {
+filter_valid_response_options <- function(pivoted_responses, varinfo, scale_options) {
   scale_options_table <- varinfo |>
     select(ITEM_NAME, SCALE_OPTIONS) |>
     left_join(
