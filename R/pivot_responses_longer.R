@@ -4,7 +4,7 @@
 #' data frame, where each row represents a single response to a single survey
 #' variable (item). This is helpful for downstream question-level summarization.
 #'
-#' @param row_level_responses A data frame or tibble with one row per respondent.
+#' @param data A data frame or tibble with one row per respondent.
 #' @param variables_to_pivot A character vector of column names to reshape into long format.
 #'
 #' @return A tibble with one row per respondent per variable, including:
@@ -27,8 +27,8 @@
 #' )
 #' pivot_responses_longer(sample_data, variables_to_pivot = c("q1", "q2", "q3"))
 #'
-pivot_responses_longer <- function(row_level_responses, variables_to_pivot) {
-  row_level_responses |>
+pivot_responses_longer <- function(data, variables_to_pivot) {
+  data |>
     rowid_to_column() |>
     mutate(across(all_of(variables_to_pivot), as.character)) |>
     pivot_longer(
