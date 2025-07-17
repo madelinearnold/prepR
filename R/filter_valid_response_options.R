@@ -55,7 +55,7 @@
 #'   pivoted_by_response, varinfo, scale_options,
 #'   exclude_responses = c("Not applicable","Prefer not to say"))
 #'
-filter_valid_response_options <- function(pivoted_responses, varinfo, scale_options) {
+filter_valid_response_options <- function(pivoted_responses, varinfo, scale_options, exclude_responses = "Not applicable") {
   scale_options_table <- varinfo |>
     select(ITEM_NAME, SCALE_OPTIONS) |>
     left_join(
