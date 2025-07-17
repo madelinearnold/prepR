@@ -23,7 +23,7 @@
 #' # Create a sample data frame with messy values
 #' messy_data <- data.frame(
 #' survey_q1 = c("Very Helpful", "Very helpful", "Not helpful", "Slightly Helpful"),
-#' survey_q2 = c("very helpful", "not helpful", "not helpful", "slightly helpful")
+#' survey_q2 = c("very helpful", "not helpful", "not helpful", "slightly helpful"),
 #' occupation = c("Self Employed", "self-employed", "Consultant", "Student"),
 #' city = c("New York", "newyork", "San Francisco", "Sanfrancisco"),
 #' country = c("USA", "United States", "Canada", "US"))

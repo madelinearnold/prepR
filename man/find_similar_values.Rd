@@ -23,3 +23,29 @@ showing the pairs of similar values and their similarity score.
 \description{
 Find Similar Character Values in a Data Frame
 }
+\examples{
+# Attach required packages
+library(cli)
+library(dplyr)
+library(stringdist)
+library(tibble)
+library(tidyr)
+library(tidyselect)
+
+# Create a sample data frame with messy values
+messy_data <- data.frame(
+survey_q1 = c("Very Helpful", "Very helpful", "Not helpful", "Slightly Helpful"),
+survey_q2 = c("very helpful", "not helpful", "not helpful", "slightly helpful"),
+occupation = c("Self Employed", "self-employed", "Consultant", "Student"),
+city = c("New York", "newyork", "San Francisco", "Sanfrancisco"),
+country = c("USA", "United States", "Canada", "US"))
+
+# Run the function on your data
+similar_pairs <- find_similar_values(messy_data)
+print(similar_pairs)
+
+# You can adjust the threshold and include case differences in similarity scoring
+find_similar_values(messy_data,
+threshold = 0.9, ignore_case = FALSE)
+
+}

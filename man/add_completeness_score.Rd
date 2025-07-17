@@ -34,7 +34,8 @@ the number of answered questions.
 }
 \examples{
 # Attach required libraries
-library(dplyr, rlang)
+library(dplyr)
+library(rlang)
 
 # Create a sample data frame
 df_survey <- data.frame(

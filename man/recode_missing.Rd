@@ -21,7 +21,8 @@ This function finds and replaces common "missing" text values (like \code{"-99"}
 }
 \examples{
 # attach required libraries
-library(dplyr, tidyselect)
+library(dplyr)
+library(tidyselect)
 
 test_df <- data.frame(
   q1 = c("A", "B", "N/A", "C"),

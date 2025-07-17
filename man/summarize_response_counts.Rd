@@ -64,7 +64,9 @@ grouping variables will supersede to determine the output.
 }
 \examples{
 # Attach required libraries
-library(dplyr, purrr, rlang)
+library(dplyr)
+library(purrr)
+library(rlang)
 
 # Create a sample data frame
 df_counts <- data.frame(

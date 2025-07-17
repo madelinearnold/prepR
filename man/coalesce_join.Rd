@@ -45,7 +45,8 @@ This function was adapted from https://alistaire.rbind.io/blog/coalescing-joins/
 }
 \examples{
 # Attach required libraries
-library(dplyr, purr)
+library(dplyr)
+library(purr)
 
 # Create sample data frames
 df1 <- data.frame(

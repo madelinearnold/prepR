@@ -32,7 +32,8 @@ missing old or new names in the mapping data frame are ignored.
 }
 \examples{
 # Attach required libraries
-library(dplyr, rlang)
+library(dplyr)
+library(rlang)
 
 # Create a sample data frame
 df_original <- data.frame(
