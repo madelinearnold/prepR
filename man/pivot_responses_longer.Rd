@@ -4,10 +4,10 @@
 \alias{pivot_responses_longer}
 \title{Expand Survey Data to One Row per Response per Variable}
 \usage{
-pivot_responses_longer(row_level_responses, variables_to_pivot)
+pivot_responses_longer(data, variables_to_pivot)
 }
 \arguments{
-\item{row_level_responses}{A data frame or tibble with one row per respondent.}
+\item{data}{A data frame or tibble with one row per respondent.}
 
 \item{variables_to_pivot}{A character vector of column names to reshape into long format.}
 }

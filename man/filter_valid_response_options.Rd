@@ -4,7 +4,12 @@
 \alias{filter_valid_response_options}
 \title{Join Metadata and Filter Valid Survey Responses}
 \usage{
-filter_valid_response_options(pivoted_responses, varinfo, scale_options)
+filter_valid_response_options(
+  pivoted_responses,
+  varinfo,
+  scale_options,
+  exclude_responses = "Not applicable"
+)
 }
 \arguments{
 \item{pivoted_responses}{A tibble with one row per respondent per variable,
