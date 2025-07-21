@@ -99,4 +99,8 @@ summary_dept_year <- summarize_response_counts(df_counts,
 print(summary_dept_year)
 
 }
+\seealso{
+Other data analysis functions: 
+\code{\link{filter_lowN_groups}()}
+}
 \concept{data analysis functions}
