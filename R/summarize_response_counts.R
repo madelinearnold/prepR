@@ -122,21 +122,21 @@ summarize_response_counts <- function(data,
       acad_group_category = if (!is.null(acad_group_var)) acad_group_var
       else if (!is.null(acad_category)) acad_category
       else NA_character_,
-      acad_group_value =  if (!is.null(acad_group_var)) .data[[acad_group_var]]
+      acad_group_value =  if (!is.null(acad_group_var)) as.character(.data[[acad_group_var]])
       else if (!is.null(acad_value)) acad_value
       else NA_character_,
 
       demo_group_category = if (!is.null(demo_group_var)) demo_group_var
       else if (!is.null(demo_category)) demo_category
       else NA_character_,
-      demo_group_value    = if (!is.null(demo_group_var)) .data[[demo_group_var]]
+      demo_group_value    = if (!is.null(demo_group_var)) as.character(.data[[demo_group_var]])
       else if (!is.null(demo_value)) demo_value
       else NA_character_,
 
       time_group_category = if (!is.null(time_group_var)) time_group_var
       else if (!is.null(time_category)) time_category
       else NA_character_,
-      time_group_value    = if (!is.null(time_group_var)) .data[[time_group_var]]
+      time_group_value    = if (!is.null(time_group_var)) as.character(.data[[time_group_var]])
       else if (!is.null(time_value)) time_value
       else NA_character_
     )
