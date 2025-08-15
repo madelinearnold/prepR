@@ -24,6 +24,12 @@ Converts a respondent-level wide-format data frame into a long-format
 data frame, where each row represents a single response to a single survey
 variable (item). This is helpful for downstream question-level summarization.
 }
+\details{
+The function uses \code{any_of()} when selecting columns to transform and reshape,
+which makes it tolerant of missing variables in \code{variables_to_pivot}. This is
+especially useful when working with survey data and variable lists that may
+differ slightly in column composition (e.g. by year or intended audience).
+}
 \examples{
 # attach required libraries
 library(dplyr)

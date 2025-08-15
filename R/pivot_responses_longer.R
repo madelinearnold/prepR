@@ -4,6 +4,11 @@
 #' data frame, where each row represents a single response to a single survey
 #' variable (item). This is helpful for downstream question-level summarization.
 #'
+#' The function uses `any_of()` when selecting columns to transform and reshape,
+#' which makes it tolerant of missing variables in `variables_to_pivot`. This is
+#' especially useful when working with survey data and variable lists that may
+#' differ slightly in column composition (e.g. by year or intended audience).
+#'
 #' @param data A data frame or tibble with one row per respondent.
 #' @param variables_to_pivot A character vector of column names to reshape into long format.
 #'
@@ -30,9 +35,9 @@
 pivot_responses_longer <- function(data, variables_to_pivot) {
   data |>
     rowid_to_column() |>
-    mutate(across(all_of(variables_to_pivot), as.character)) |>
+    mutate(across(any_of(variables_to_pivot), as.character)) |>
     pivot_longer(
-      cols = all_of(variables_to_pivot),
+      cols = any_of(variables_to_pivot),
       names_to = "ITEM_NAME",
       values_to = "response"
     ) |>
