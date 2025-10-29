@@ -4,7 +4,13 @@
 \alias{pivot_two_academic_cols}
 \title{Pivot Two Academic Columns to One}
 \usage{
-pivot_two_academic_cols(data, first_col, second_col, new_col_name)
+pivot_two_academic_cols(
+  data,
+  first_col,
+  second_col,
+  new_col_name,
+  apply_en_route_masters_logic = TRUE
+)
 }
 \arguments{
 \item{data}{A data frame containing the academic plan columns. It is expected
@@ -19,6 +25,12 @@ academic column.}
 
 \item{new_col_name}{A character string specifying the desired name for the
 new, consolidated academic column.}
+
+\item{apply_en_route_masters_logic}{A logical value. If \code{TRUE} (the default),
+the function will check for a column named \code{ac_masters_en_route_PhD}.
+If that column exists, it will set the value of \code{first_col} to \code{NA} where
+\code{ac_masters_en_route_PhD} is \code{TRUE}. If \code{FALSE}, the \code{first_col} is not
+altered, and the \code{ac_masters_en_route_PhD} column is not required to exist.}
 }
 \value{
 A transformed data frame with the two academic columns pivoted into a
@@ -29,8 +41,9 @@ column indicating the original source column.
 This function handles data complexity arising from having two academic plan
 columns by converting them into a single, consolidated academic column. It
 includes logic to drop the first value if a student's first plan is an
-academic master's en route to a PhD, and removes the second value if it's
-identical to the first. Placeholder or empty values are also filtered out.
+academic master's en route to a PhD (when \code{apply_en_route_masters_logic} is
+TRUE), and removes the second value if it's identical to the first.
+Placeholder or empty values are also filtered out.
 }
 \examples{
 # Attach required libraries
@@ -50,11 +63,24 @@ df_acad <- data.frame(
 pivoted_df <- pivot_two_academic_cols(df_acad,
   first_col = "AcademicPlan1",
   second_col = "AcademicPlan2",
-  new_col_name = "ConsolidatedAcademicPlan"
+  new_col_name = "ConsolidatedAcademicPlan",
+  apply_en_route_masters_logic = TRUE # Default behavior
 )
 print(pivoted_df)
 
-# Example with a placeholder value
+# Example setting apply_en_route_masters_logic = FALSE
+# Using the same data
+pivoted_df_false <- pivot_two_academic_cols(df_acad,
+  first_col = "AcademicPlan1",
+  second_col = "AcademicPlan2",
+  new_col_name = "ConsolidatedAcademicPlan",
+  apply_en_route_masters_logic = FALSE
+)
+print("--- Pivoted with apply_en_route_masters_logic = FALSE ---")
+print(pivoted_df_false)
+# Note: The "History MA" for ID 1 is KEPT.
+
+# Example with a "-" placeholder value
 df_acad_placeholder <- data.frame(
   ID = 1:3,
   Major1 = c("History", "Art", "Philosophy"),

@@ -2,7 +2,7 @@
 #'
 #' Converts a respondent-level wide-format data frame into a long-format
 #' data frame, where each row represents a single response to a single survey
-#' variable (item). This is helpful for downstream question-level summarization.
+#' variable/item. This is helpful for downstream question-level summarization.
 #'
 #' The function uses `any_of()` when selecting columns to transform and reshape,
 #' which makes it tolerant of missing variables in `variables_to_pivot`. This is
