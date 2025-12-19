@@ -51,7 +51,8 @@ join_varinfo <- function(prior_varinfo, new_info, var_name_col, text_col, max_di
   final_joined <- fuzzy_joined |>
     coalesce_left_join(
       new_info_clean,
-      by = setNames(new_var_col, var_name_col)
+      by = setNames(new_var_col, var_name_col),
+      keep = TRUE
     )
 
   # Reporting
