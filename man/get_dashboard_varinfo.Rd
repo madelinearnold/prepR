@@ -16,3 +16,14 @@ A filtered and column-trimmed tibble.
 Filters the varinfo to only include variables marked for dashboard display
 and selects a specific subset of columns required by the dashboard.
 }
+\seealso{
+Other varinfo prep functions: 
+\code{\link{add_dash_display_flag}()},
+\code{\link{add_label_metadata}()},
+\code{\link{check_and_export_unmatched}()},
+\code{\link{join_varinfo}()},
+\code{\link{load_survey_column_info}()},
+\code{\link{sort_varinfo}()},
+\code{\link{update_survey_admin_summaries}()}
+}
+\concept{varinfo prep functions}
