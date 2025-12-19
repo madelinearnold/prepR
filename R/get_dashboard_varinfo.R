@@ -6,6 +6,7 @@
 #' @param df The varinfo data frame.
 #' @return A filtered and column-trimmed tibble.
 #' @importFrom dplyr filter select any_of
+#' @family varinfo prep functions
 #' @export
 get_dashboard_varinfo <- function(df) {
   target_cols <- c(

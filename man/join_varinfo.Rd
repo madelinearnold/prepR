@@ -28,3 +28,14 @@ current <- tibble::tibble(QualtricsVariableName.2025 = "Q1",
 
 join_varinfo(prior, current, "ITEM_NAME", "text_old")
 }
+\seealso{
+Other varinfo prep functions: 
+\code{\link{add_dash_display_flag}()},
+\code{\link{add_label_metadata}()},
+\code{\link{check_and_export_unmatched}()},
+\code{\link{get_dashboard_varinfo}()},
+\code{\link{load_survey_column_info}()},
+\code{\link{sort_varinfo}()},
+\code{\link{update_survey_admin_summaries}()}
+}
+\concept{varinfo prep functions}

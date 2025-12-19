@@ -10,7 +10,10 @@
 #' @param max_dist Maximum Levenshtein distance for fuzzy matching.
 #' @importFrom fuzzyjoin stringdist_left_join
 #' @importFrom tibble rowid_to_column
-#' @importFrom dplyr arrange distinct
+#' @importFrom dplyr arrange distinct mutate coalesce
+#' @importFrom stats setNames
+#' @importFrom glue glue
+#' @family varinfo prep functions
 #' @export
 #' @examples
 #' prior <- tibble::tibble(ITEM_NAME = "Q1", text_old = "What is your age?")
@@ -24,24 +27,31 @@ join_varinfo <- function(prior_varinfo, new_info, var_name_col, text_col, max_di
   new_var_col  <- names(new_info)[1]
   new_text_col <- names(new_info)[2]
 
+  # Cleaning: Convert NAs to empty strings (matching can't compare NA to string)
+  new_info_clean <- new_info |>
+    mutate(!!new_text_col := coalesce(!!sym(new_text_col), ""))
+
+  prior_varinfo_clean <- prior_varinfo |>
+    mutate(!!text_col := coalesce(!!sym(text_col), ""))
+
   # --- PASS 1: Fuzzy Text Join ---
-  fuzzy_joined <- prior_varinfo |>
-    tibble::rowid_to_column("row_id") |>
+  fuzzy_joined <- prior_varinfo_clean |>
+    rowid_to_column("row_id") |>
     fuzzyjoin::stringdist_left_join(
-      new_info,
-      by = stats::setNames(new_text_col, text_col),
+      new_info_clean,
+      by = setNames(new_text_col, text_col),
       max_dist = max_dist,
       distance_col = "dist"
     ) |>
-    dplyr::arrange(row_id, dist) |>
-    dplyr::distinct(row_id, .keep_all = TRUE)
+    arrange(row_id, dist) |>
+    distinct(row_id, .keep_all = TRUE)
 
   # --- PASS 2: Exact Name Join (Coalesce) ---
   # This catches variables that changed text but kept the same Qualtrics ID
   final_joined <- fuzzy_joined |>
     coalesce_left_join(
-      new_info,
-      by = stats::setNames(new_var_col, var_name_col)
+      new_info_clean,
+      by = setNames(new_var_col, var_name_col)
     )
 
   # Reporting

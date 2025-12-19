@@ -7,6 +7,7 @@
 #' @param df The varinfo data frame.
 #' @param current_admin The ID of the current administration (e.g., "2025").
 #' @return A data frame with a boolean 'DASH_DISPLAY' column.
+#' @family varinfo prep functions
 #' @importFrom dplyr mutate case_when
 #' @export
 add_dash_display_flag <- function(df, current_admin) {

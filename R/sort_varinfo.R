@@ -11,6 +11,7 @@
 #' (e.g. c("2025", "2024")).
 #' @return A sorted varinfo tibble.
 #' @importFrom dplyr mutate select arrange relocate last_col match coalesce
+#' @family varinfo prep functions
 #' @export
 #' @examples
 #' varinfo <- tibble::tibble(

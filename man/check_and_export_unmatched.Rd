@@ -24,3 +24,14 @@ CSV for manual review.
 \examples{
 # check_and_export_unmatched(joined, current, "data/temp/unmatched_2025.csv")
 }
+\seealso{
+Other varinfo prep functions: 
+\code{\link{add_dash_display_flag}()},
+\code{\link{add_label_metadata}()},
+\code{\link{get_dashboard_varinfo}()},
+\code{\link{join_varinfo}()},
+\code{\link{load_survey_column_info}()},
+\code{\link{sort_varinfo}()},
+\code{\link{update_survey_admin_summaries}()}
+}
+\concept{varinfo prep functions}

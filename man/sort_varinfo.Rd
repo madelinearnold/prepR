@@ -35,3 +35,14 @@ QuestionText.2025 = c("question one", "question two"))
 
 sort_varinfo(joined_varinfo, current_meta,  c("2025", "2024"))
 }
+\seealso{
+Other varinfo prep functions: 
+\code{\link{add_dash_display_flag}()},
+\code{\link{add_label_metadata}()},
+\code{\link{check_and_export_unmatched}()},
+\code{\link{get_dashboard_varinfo}()},
+\code{\link{join_varinfo}()},
+\code{\link{load_survey_column_info}()},
+\code{\link{update_survey_admin_summaries}()}
+}
+\concept{varinfo prep functions}

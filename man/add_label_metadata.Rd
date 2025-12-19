@@ -21,3 +21,14 @@ dashboard visualizations.
 varinfo <- tibble::tibble(ITEM_MEMBER = c("Strongly Agree", NA))
 add_label_metadata(varinfo)
 }
+\seealso{
+Other varinfo prep functions: 
+\code{\link{add_dash_display_flag}()},
+\code{\link{check_and_export_unmatched}()},
+\code{\link{get_dashboard_varinfo}()},
+\code{\link{join_varinfo}()},
+\code{\link{load_survey_column_info}()},
+\code{\link{sort_varinfo}()},
+\code{\link{update_survey_admin_summaries}()}
+}
+\concept{varinfo prep functions}

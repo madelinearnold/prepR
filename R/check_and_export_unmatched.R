@@ -10,6 +10,7 @@
 #' @return The tibble of unmatched variables (invisibly).
 #' @importFrom dplyr anti_join
 #' @importFrom readr write_csv
+#' @family varinfo prep functions
 #' @export
 #' @examples
 #' # check_and_export_unmatched(joined, current, "data/temp/unmatched_2025.csv")

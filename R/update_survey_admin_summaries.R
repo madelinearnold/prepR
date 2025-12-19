@@ -11,6 +11,7 @@
 #' @param df The varinfo data frame.
 #' @param recency_order Optional vector of admin IDs in order (most recent first).
 #' @importFrom dplyr rowwise mutate c_across all_of ungroup select
+#' @family varinfo prep functions
 #' @export
 #' @examples
 #' test_df <- tibble::tibble(
