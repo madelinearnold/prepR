@@ -4,14 +4,15 @@
 \alias{check_and_export_unmatched}
 \title{Check and Export Unmatched Variables}
 \usage{
-check_and_export_unmatched(joined_varinfo, new_info, export_path)
+check_and_export_unmatched(joined_varinfo, new_info, export_path = NULL)
 }
 \arguments{
 \item{joined_varinfo}{The data frame resulting from \code{join_varinfo}.}
 
 \item{new_info}{The data frame resulting from \code{load_survey_column_info}.}
 
-\item{export_path}{The file path (including filename) where the CSV should be saved.}
+\item{export_path}{Optional; the file path to save the unmatched CSV.
+If NULL (default), it only prints a summary to the console.}
 }
 \value{
 The tibble of unmatched variables (invisibly).
