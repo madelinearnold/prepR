@@ -30,7 +30,7 @@ sort_varinfo <- function(varinfo, new_info, recency_order) {
 
   recency_rank <- setNames(seq_along(recency_order), recency_order)
 
-  updated_varinfo |>
+  varinfo |>
     mutate(
       # 1. recency priority: metadata is always -1 (top),
       # then rank based on MostRecentSurveyAdmin
