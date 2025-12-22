@@ -1,6 +1,6 @@
 #' Flag Variables for Dashboard Display
 #'
-#' Applies business logic to determine if a variable should be displayed
+#' Applies logic to determine if a variable should be displayed
 #' in the dashboard. It excludes metadata, administrative types, and questions
 #' that were not asked in the current administration. Uses `MostRecentSurveyAdmin`
 #' column from \code{update_survey_admin_summaries}.
@@ -14,8 +14,12 @@
 #' @importFrom dplyr mutate case_when
 #' @export
 add_dash_display_flag <- function(df, current_admin, overwrite = FALSE) {
-  # Initialize column if missing
-  if (!"DASH_DISPLAY" %in% names(df)) df$DASH_DISPLAY <- NA
+  # If missing, create it. If it exists, force it to logical.
+  if (!"DASH_DISPLAY" %in% names(df)) {
+    df$DASH_DISPLAY <- NA
+  } else {
+    df$DASH_DISPLAY <- as.logical(df$DASH_DISPLAY)
+  }
 
   df |>
     dplyr::mutate(DASH_DISPLAY = dplyr::case_when(

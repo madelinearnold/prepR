@@ -18,7 +18,7 @@ If FALSE (default), preserves existing TRUE/FALSE flags for existing items.}
 A data frame with a boolean 'DASH_DISPLAY' column.
 }
 \description{
-Applies business logic to determine if a variable should be displayed
+Applies logic to determine if a variable should be displayed
 in the dashboard. It excludes metadata, administrative types, and questions
 that were not asked in the current administration. Uses \code{MostRecentSurveyAdmin}
 column from \code{update_survey_admin_summaries}.
