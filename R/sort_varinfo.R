@@ -10,7 +10,7 @@
 #' @param recency_order Vector of admin IDs in order, most recent first
 #' (e.g. c("2025", "2024")).
 #' @return A sorted varinfo tibble.
-#' @importFrom dplyr mutate select arrange relocate last_col match coalesce
+#' @importFrom dplyr mutate select arrange match case_when
 #' @family varinfo prep functions
 #' @export
 #' @examples
@@ -34,9 +34,12 @@ sort_varinfo <- function(varinfo, new_info, recency_order) {
     mutate(
       # 1. recency priority: metadata is always -1 (top),
       # then rank based on MostRecentSurveyAdmin
-      priority = if_else(
-        ITEM_TYPE %in% c("administrative", "metadata"), -1L,
-        recency_rank[MostRecentSurveyAdmin]),
+      priority = case_when(
+        ITEM_TYPE == "administrative" ~ -2L,
+        ITEM_TYPE == "metadata"       ~ -1L,
+        .default = as.integer(recency_rank[MostRecentSurveyAdmin])
+      ),
+
       # 2. survey index: where did it appear in the current Qualtrics file?
       # variables from older years not in this file will get NA
       survey_index = match(.data[[current_qualtrics_col]],
@@ -44,6 +47,5 @@ sort_varinfo <- function(varinfo, new_info, recency_order) {
     ) |>
     # Sort by priority (year) -> survey order (within current year) -> ITEM_NAME
     arrange(priority, survey_index, ITEM_NAME) |>
-    select(-priority, -survey_index) |>
-    relocate(AllSurveyAdmin, MostRecentSurveyAdmin, .after = last_col())
+    select(-priority, -survey_index)
 }
