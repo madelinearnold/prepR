@@ -41,13 +41,18 @@ patch_table <- function(x, y, by, sentinel = "DELETE") {
   # 1. Sync Schema: Ensure x has all columns found in y
   x <- sync_column_schema(x, y)
 
-  # 2. Join side-by-side
+  # 2. Determine columns to patch and convert all patch columns to character
+  # to prevent data typing errors
+  patch_cols <- setdiff(names(y), by)
+
+  x <- x |> dplyr::mutate(dplyr::across(dplyr::any_of(patch_cols), as.character))
+  y <- y |> dplyr::mutate(dplyr::across(dplyr::any_of(patch_cols), as.character))
+
+  # 3. Join side-by-side
   combined <- x |>
     dplyr::full_join(y, by = by, suffix = c(".orig", ".patch"))
 
-  # 3. Coalesce Loop
-  patch_cols <- setdiff(names(y), by)
-
+  # 4. Coalesce Loop
   for (col in patch_cols) {
     orig_col  <- paste0(col, ".orig")
     patch_col <- paste0(col, ".patch")
@@ -55,7 +60,7 @@ patch_table <- function(x, y, by, sentinel = "DELETE") {
     combined[[col]] <- dplyr::coalesce(combined[[patch_col]], combined[[orig_col]])
   }
 
-  # 4. Clean up
+  # 5. Clean up
   combined |>
     dplyr::select(dplyr::all_of(names(x))) |>
     recode_missing(additional_values = sentinel)
