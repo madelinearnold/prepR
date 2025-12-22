@@ -23,6 +23,7 @@ Other varinfo prep functions:
 \code{\link{get_dashboard_varinfo}()},
 \code{\link{join_varinfo}()},
 \code{\link{sort_varinfo}()},
+\code{\link{sync_column_schema}()},
 \code{\link{update_survey_admin_summaries}()}
 }
 \concept{varinfo prep functions}

@@ -53,7 +53,9 @@ join_varinfo <- function(prior_varinfo, new_info, var_name_col, text_col, max_di
       new_info_clean,
       by = setNames(new_var_col, var_name_col),
       keep = TRUE
-    )
+    ) |>
+    # clean up row_id
+    select(-row_id)
 
   # Reporting
   total_new <- nrow(new_info)

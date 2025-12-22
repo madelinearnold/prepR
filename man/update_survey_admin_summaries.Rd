@@ -39,6 +39,7 @@ Other varinfo prep functions:
 \code{\link{get_dashboard_varinfo}()},
 \code{\link{join_varinfo}()},
 \code{\link{load_survey_column_info}()},
-\code{\link{sort_varinfo}()}
+\code{\link{sort_varinfo}()},
+\code{\link{sync_column_schema}()}
 }
 \concept{varinfo prep functions}

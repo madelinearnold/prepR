@@ -31,6 +31,7 @@ Other varinfo prep functions:
 \code{\link{join_varinfo}()},
 \code{\link{load_survey_column_info}()},
 \code{\link{sort_varinfo}()},
+\code{\link{sync_column_schema}()},
 \code{\link{update_survey_admin_summaries}()}
 }
 \concept{varinfo prep functions}
