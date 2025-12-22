@@ -16,6 +16,6 @@ get_dashboard_varinfo <- function(df) {
   )
 
   df |>
-    filter(DASH_DISPLAY == TRUE) |>
+    filter(as.logical(DASH_DISPLAY)) |> # converts "TRUE" string --> TRUE
     select(any_of(target_cols))
 }
