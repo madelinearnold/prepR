@@ -4,12 +4,15 @@
 \alias{add_dash_display_flag}
 \title{Flag Variables for Dashboard Display}
 \usage{
-add_dash_display_flag(df, current_admin)
+add_dash_display_flag(df, current_admin, overwrite = FALSE)
 }
 \arguments{
 \item{df}{The varinfo data frame.}
 
 \item{current_admin}{The ID of the current administration (e.g., "2025").}
+
+\item{overwrite}{Logical. If TRUE, resets all flags based on current logic.
+If FALSE (default), preserves existing TRUE/FALSE flags for existing items.}
 }
 \value{
 A data frame with a boolean 'DASH_DISPLAY' column.
@@ -17,7 +20,8 @@ A data frame with a boolean 'DASH_DISPLAY' column.
 \description{
 Applies business logic to determine if a variable should be displayed
 in the dashboard. It excludes metadata, administrative types, and questions
-that were not asked in the current administration.
+that were not asked in the current administration. Uses \code{MostRecentSurveyAdmin}
+column from \code{update_survey_admin_summaries}.
 }
 \seealso{
 Other varinfo prep functions: 

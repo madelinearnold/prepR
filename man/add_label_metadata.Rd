@@ -4,10 +4,13 @@
 \alias{add_label_metadata}
 \title{Add Label and Label Length Columns}
 \usage{
-add_label_metadata(df)
+add_label_metadata(df, overwrite = FALSE)
 }
 \arguments{
 \item{df}{The varinfo data frame.}
+
+\item{overwrite}{Logical. If TRUE, recalculates all labels. If FALSE (default),
+only populates empty/NA labels using ITEM_MEMBER.}
 }
 \value{
 A data frame with 'label' and 'label_length' columns added.

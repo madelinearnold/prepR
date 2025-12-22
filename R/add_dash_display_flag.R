@@ -2,28 +2,38 @@
 #'
 #' Applies business logic to determine if a variable should be displayed
 #' in the dashboard. It excludes metadata, administrative types, and questions
-#' that were not asked in the current administration.
+#' that were not asked in the current administration. Uses `MostRecentSurveyAdmin`
+#' column from \code{update_survey_admin_summaries}.
 #'
 #' @param df The varinfo data frame.
 #' @param current_admin The ID of the current administration (e.g., "2025").
+#' @param overwrite Logical. If TRUE, resets all flags based on current logic.
+#'   If FALSE (default), preserves existing TRUE/FALSE flags for existing items.
 #' @return A data frame with a boolean 'DASH_DISPLAY' column.
 #' @family varinfo prep functions
 #' @importFrom dplyr mutate case_when
 #' @export
-add_dash_display_flag <- function(df, current_admin) {
+add_dash_display_flag <- function(df, current_admin, overwrite = FALSE) {
+  # Initialize column if missing
+  if (!"DASH_DISPLAY" %in% names(df)) df$DASH_DISPLAY <- NA
+
   df |>
     dplyr::mutate(DASH_DISPLAY = dplyr::case_when(
+      # 1. PRESERVATION (Priority #1)
+      # If we are NOT overwriting AND a value already exists, stop here and keep it.
+      !overwrite & !is.na(DASH_DISPLAY) ~ DASH_DISPLAY,
+
+      # 2. HARD RULES (Priority #2)
+      # Only reached if overwrite = TRUE OR if the value was NA.
       # Exclude administrative & text variables
       ITEM_TYPE %in% c("metadata", "administrative", "Open Text") ~ FALSE,
-
       # Exclude variables with empty/NA presentation types
       is.na(ITEM_PRESENTATION_TYPE) | ITEM_PRESENTATION_TYPE %in% c("", "NA") ~ FALSE,
-
       # Exclude variables not asked in the current administration
       # (Assumes MostRecentSurveyAdmin exists from update_survey_admin_summaries)
       MostRecentSurveyAdmin != current_admin ~ FALSE,
 
-      # Default to TRUE
+      # 3. DEFAULT: Otherwise TRUE
       .default = TRUE
     ))
 }
