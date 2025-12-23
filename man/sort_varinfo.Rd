@@ -37,6 +37,7 @@ sort_varinfo(joined_varinfo, current_meta,  c("2025", "2024"))
 }
 \seealso{
 Other varinfo prep functions: 
+\code{\link{add_catalog_display_flag}()},
 \code{\link{add_dash_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{check_and_export_unmatched}()},

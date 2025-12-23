@@ -19,12 +19,14 @@ A data frame with a boolean 'DASH_DISPLAY' column.
 }
 \description{
 Applies logic to determine if a variable should be displayed
-in the dashboard. It excludes metadata, administrative types, and questions
-that were not asked in the current administration. Uses \code{MostRecentSurveyAdmin}
+in the dashboard. It excludes metadata, administrative types, open text
+questions, variables with empty \code{ITEM_PRESENTATION_TYPE}, and questions that
+were not asked in the current administration. Uses \code{MostRecentSurveyAdmin}
 column from \code{update_survey_admin_summaries}.
 }
 \seealso{
 Other varinfo prep functions: 
+\code{\link{add_catalog_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{check_and_export_unmatched}()},
 \code{\link{get_dashboard_varinfo}()},

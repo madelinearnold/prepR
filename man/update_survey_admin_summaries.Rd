@@ -33,6 +33,7 @@ update_survey_admin_summaries(test_df, recency_order = c("2025", "2024"))
 }
 \seealso{
 Other varinfo prep functions: 
+\code{\link{add_catalog_display_flag}()},
 \code{\link{add_dash_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{check_and_export_unmatched}()},

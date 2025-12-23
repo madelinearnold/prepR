@@ -1,8 +1,9 @@
 #' Flag Variables for Dashboard Display
 #'
 #' Applies logic to determine if a variable should be displayed
-#' in the dashboard. It excludes metadata, administrative types, and questions
-#' that were not asked in the current administration. Uses `MostRecentSurveyAdmin`
+#' in the dashboard. It excludes metadata, administrative types, open text
+#' questions, variables with empty `ITEM_PRESENTATION_TYPE`, and questions that
+#' were not asked in the current administration. Uses `MostRecentSurveyAdmin`
 #' column from \code{update_survey_admin_summaries}.
 #'
 #' @param df The varinfo data frame.
