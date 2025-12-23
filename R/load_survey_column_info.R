@@ -13,7 +13,7 @@ load_survey_column_info <- function(file_path, survey_admin) {
   data <- read_csv(file_path, n_max = 1, show_col_types = FALSE)
 
   col_var  <- paste0("QualtricsVariableName.", survey_admin)
-  col_text <- paste0("QualtricsQuestionText.", survey_admin)
+  col_text <- paste0("QualtricsVariableText.", survey_admin)
 
   column_info <- tibble(
     !!col_var  := colnames(data),
