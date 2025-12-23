@@ -10,9 +10,9 @@ get_catalog_varinfo(df, admin_ids = NULL)
 \item{df}{The varinfo data frame.}
 
 \item{admin_ids}{Optional vector of admin IDs (e.g., c("2024", "2025")).
-If provided, only selects text columns for these specific years.
-If NULL, selects ALL year-specific text columns found in the data
-(columns starting with "QualtricsVariableText.")}
+Defaults to NULL. If provided, only selects text columns for these specific
+administrations (years). If NULL, selects ALL year-specific text columns
+found in the data (columns starting with "QualtricsVariableText.")}
 }
 \value{
 A filtered and column-trimmed tibble.

@@ -5,9 +5,9 @@
 #'
 #' @param df The varinfo data frame.
 #' @param admin_ids Optional vector of admin IDs (e.g., c("2024", "2025")).
-#'   If provided, only selects text columns for these specific years.
-#'   If NULL, selects ALL year-specific text columns found in the data
-#'   (columns starting with "QualtricsVariableText.")
+#' Defaults to NULL. If provided, only selects text columns for these specific
+#' administrations (years). If NULL, selects ALL year-specific text columns
+#' found in the data (columns starting with "QualtricsVariableText.")
 #' @return A filtered and column-trimmed tibble.
 #' @importFrom dplyr filter select any_of
 #' @family varinfo prep functions
