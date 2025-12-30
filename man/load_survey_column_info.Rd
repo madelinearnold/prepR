@@ -4,12 +4,25 @@
 \alias{load_survey_column_info}
 \title{Load Qualtrics Column Metadata from Response CSV}
 \usage{
-load_survey_column_info(file_path, survey_admin)
+load_survey_column_info(
+  file_path,
+  survey_admin,
+  var_prefix = "QualtricsVariableName.",
+  text_prefix = "QualtricsVariableText."
+)
 }
 \arguments{
 \item{file_path}{Path to raw Qualtrics CSV.}
 
 \item{survey_admin}{ID for this administration (e.g., "2025" or "Fa2024").}
+
+\item{var_prefix}{A character string prefix to precede the survey admin ID
+in the name of the column that contains the variable name values (defaults
+to "QualtricsVariableName.").}
+
+\item{text_prefix}{A character string prefix to precede the survey admin ID
+in the name of the column that contains the question text (defaults to
+"QualtricsVariableText.").}
 }
 \description{
 Reads a Qualtrics CSV and extracts the variable names and question text

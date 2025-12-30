@@ -4,15 +4,17 @@
 \alias{get_catalog_varinfo}
 \title{Slim Varinfo for Export for Survey Question Catalog Display}
 \usage{
-get_catalog_varinfo(df, admin_ids = NULL)
+get_catalog_varinfo(df, text_prefix_pattern = "Text", admin_ids = NULL)
 }
 \arguments{
 \item{df}{The varinfo data frame.}
 
+\item{text_prefix_pattern}{Character string to search for in column names
+to select the text columns to keep. Defaults to "Text".}
+
 \item{admin_ids}{Optional vector of admin IDs (e.g., c("2024", "2025")).
-Defaults to NULL. If provided, only selects text columns for these specific
-administrations (years). If NULL, selects ALL year-specific text columns
-found in the data (columns starting with "QualtricsVariableText.")}
+Defaults to NULL. If provided, only selects text columns containing
+one of the provided admin IDs. If NULL, selects all text columns.}
 }
 \value{
 A filtered and column-trimmed tibble.

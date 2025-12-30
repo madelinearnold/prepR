@@ -4,22 +4,40 @@
 \alias{update_survey_admin_summaries}
 \title{Update Survey Administration Summary Columns}
 \usage{
-update_survey_admin_summaries(df, recency_order = NULL)
+update_survey_admin_summaries(
+  df,
+  admin_prefix = "QualtricsVariableName.",
+  recency_order = NULL
+)
 }
 \arguments{
 \item{df}{The varinfo data frame.}
 
-\item{recency_order}{Optional vector of admin IDs in order (most recent first).}
+\item{admin_prefix}{A character string representing the prefix used for
+administration-specific columns. Include any trailing separator
+(like a dot or underscore). Defaults to "QualtricsVariableName.".}
+
+\item{recency_order}{Optional vector of admin IDs in the desired order
+(most recent first). If \code{NULL} (default), the function extracts digits
+from the admin suffixes and sorts them in descending numeric order.
+Especially helpful when admin IDs contain characters (e.g. Sp25).}
 }
 \description{
-Looks for columns in the varinfo with the pattern QualtricsVariableName.XXX
-where XXX is the survey administration year, semester, or other date id
-(columns can also be supplied as a vector in recency order). If a given
+Identifies columns in the varinfo matching a specific prefix (e.g.,
+"QualtricsVariableName.") and uses them to determine which survey
+administrations a variable appeared in.
+}
+\details{
+Looks for columns in the varinfo with the pattern \code{admin_prefix} followed by
+an admin ID (the survey administration year, semester, or other date id).
+Admin IDs can also be supplied as a vector in recency order. If a given
 variable (row in the varinfo) is not NA for a column, we assume that question
-was asked in that survey administration. Generates two new columns:
+was asked in that survey administration. The function generates two new
+columns:
 \enumerate{
-\item \code{AllSurveyAdmin} with a comma separated list of admin IDs and
-\item \code{MostRecentSurveyAdmin} with only the most recent admin ID.
+\item \code{AllSurveyAdmin} A comma-separated string of all admin IDs where
+the variable was present, sorted by recency.
+\item \code{MostRecentSurveyAdmin} The single most recent admin ID.
 }
 }
 \examples{

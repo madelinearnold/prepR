@@ -4,15 +4,17 @@
 #' and selects a specific subset of relevant columns.
 #'
 #' @param df The varinfo data frame.
+#' @param text_prefix_pattern Character string to search for in column names
+#' to select the text columns to keep. Defaults to "Text".
 #' @param admin_ids Optional vector of admin IDs (e.g., c("2024", "2025")).
-#' Defaults to NULL. If provided, only selects text columns for these specific
-#' administrations (years). If NULL, selects ALL year-specific text columns
-#' found in the data (columns starting with "QualtricsVariableText.")
+#' Defaults to NULL. If provided, only selects text columns containing
+#' one of the provided admin IDs. If NULL, selects all text columns.
 #' @return A filtered and column-trimmed tibble.
 #' @importFrom dplyr filter select any_of
 #' @family varinfo prep functions
 #' @export
-get_catalog_varinfo <- function(df, admin_ids = NULL) {
+get_catalog_varinfo <- function(df, text_prefix_pattern = "Text",
+                                admin_ids = NULL) {
   core_cols <- c(
     "ITEM_NAME", "ITEM_SECTION", "ITEM_STEM", "ITEM_MEMBER",
     "MostRecentSurveyAdmin", "AllSurveyAdmin", "SCALE_OPTIONS",
@@ -21,13 +23,12 @@ get_catalog_varinfo <- function(df, admin_ids = NULL) {
 
   # Handle Dynamic Text Columns
   if (!is.null(admin_ids)) {
-    # Option A: User provided specific IDs, construct the names
-    # Matches "QualtricsVariableText.2024", "QualtricsVariableText.2025", etc.
-    dynamic_text_cols <- paste0("QualtricsVariableText.", admin_ids)
+    # Matches columns containing text prefix and ending with one of the admin_ids
+    id_pattern <- paste0("(", paste(admin_ids, collapse = "|"), ")$")
+    dynamic_text_cols <- names(df)[grepl(text_prefix_pattern, names(df)) & grepl(id_pattern, names(df))]
   } else {
-    # Option B: Dynamically find ANY column starting with the pattern
-    # The regex matches "QualtricsVariableText." followed by anything
-    dynamic_text_cols <- grep("^QualtricsVariableText\\.", names(df), value = TRUE)
+    # Matches columns containing text prefix
+    dynamic_text_cols <- grep(text_prefix_pattern, names(df), value = TRUE)
   }
 
   df |>
