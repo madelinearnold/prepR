@@ -64,19 +64,19 @@ update_survey_admin_summaries <- function(df,
       present_ids = list(admin_ids[!is.na(c_across(all_of(admin_cols)))]),
 
       # filter and sort present ids by recency_order
-      matches = list(intersect(recency_order, unlist(present_ids))),
+      matches = list(intersect(recency_order, present_ids)),
 
       # All administrations (sorted according to the provided recency_order)
       # We use an IF check to return NA instead of an empty string ""
-      AllSurveyAdmin = if (length(matches[[1]]) > 0) {
-        paste(matches[[1]], collapse = ", ")
+      AllSurveyAdmin = if (length(matches) > 0) {
+        paste(matches, collapse = ", ")
       } else {
         NA_character_
       },
 
       # Most recent administration (appears first in the recency_order)
-      MostRecentSurveyAdmin = if (length(matches[[1]]) > 0) {
-        matches[[1]][1]
+      MostRecentSurveyAdmin = if (length(matches) > 0) {
+        matches[1]
       } else {
         NA_character_
       }
