@@ -24,7 +24,7 @@ then an exact coalesce join on variable names.
 \examples{
 prior <- tibble::tibble(ITEM_NAME = "Q1", text_old = "What is your age?")
 current <- tibble::tibble(QualtricsVariableName.2025 = "Q1",
-                          QuestionText.2025 = "What's your age?") # slight text diff
+                          QualtricsVariableText.2025 = "What's your age?") # slight text diff
 
 join_varinfo(prior, current, "ITEM_NAME", "text_old")
 }

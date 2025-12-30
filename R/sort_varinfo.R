@@ -21,7 +21,7 @@
 #'   QualtricsVariableName.2025 = c("Q2", "Q1")
 #' )
 #' current_meta <- tibble::tibble(QualtricsVariableName.2025 = c("Q1", "Q2"),
-#' QuestionText.2025 = c("question one", "question two"))
+#' QualtricsVariableText.2025 = c("question one", "question two"))
 #'
 #' sort_varinfo(joined_varinfo, current_meta,  c("2025", "2024"))
 sort_varinfo <- function(varinfo, new_info, recency_order) {

@@ -18,7 +18,7 @@
 #' @examples
 #' prior <- tibble::tibble(ITEM_NAME = "Q1", text_old = "What is your age?")
 #' current <- tibble::tibble(QualtricsVariableName.2025 = "Q1",
-#'                           QuestionText.2025 = "What's your age?") # slight text diff
+#'                           QualtricsVariableText.2025 = "What's your age?") # slight text diff
 #'
 #' join_varinfo(prior, current, "ITEM_NAME", "text_old")
 join_varinfo <- function(prior_varinfo, new_info, var_name_col, text_col, max_dist = 3) {
@@ -60,7 +60,7 @@ join_varinfo <- function(prior_varinfo, new_info, var_name_col, text_col, max_di
   # Reporting
   total_new <- nrow(new_info)
   matched   <- sum(!is.na(final_joined[[new_var_col]]))
-  message(glue::glue("Matched {matched} out of {total_new} variables."))
+  cat(glue::glue("Matched {matched} out of {total_new} variables."))
 
   return(final_joined)
 }
