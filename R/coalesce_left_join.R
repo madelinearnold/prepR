@@ -31,11 +31,11 @@ coalesce_left_join <- function(x, y,
     1,
     nchar(to_coalesce) - nchar(suffix_used)
   ))
-
-  coalesced <- purrr::map_dfc(to_coalesce, ~dplyr::coalesce(
+  # suppress messages about duplicate or empty column names
+  coalesced <- suppressMessages(purrr::map_dfc(to_coalesce, ~dplyr::coalesce(
     joined[[paste0(.x, suffix[1])]],
     joined[[paste0(.x, suffix[2])]]
-  ))
+  )))
   names(coalesced) <- to_coalesce
 
   dplyr::bind_cols(joined, coalesced)[cols]
