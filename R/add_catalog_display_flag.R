@@ -57,7 +57,7 @@ add_catalog_display_flag <- function(df, admin_to_include = NULL, overwrite = FA
 
       # 2. Exclude metadata
       # Only reached if overwrite = TRUE OR if the value was NA.
-      ITEM_TYPE %in% c("metadata", "administrative", "auth data", "embedded data") ~ FALSE,
+      ITEM_TYPE %in% c("metadata", "administrative", "auth data", "embedded data", "embedded data from panel") ~ FALSE,
 
       # 3. Admin filter
       # If a filter is provided, check if AllSurveyAdmin contains ANY of the IDs.
