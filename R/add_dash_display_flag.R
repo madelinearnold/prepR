@@ -31,7 +31,7 @@ add_dash_display_flag <- function(df, current_admin, overwrite = FALSE) {
       # 2. HARD RULES (Priority #2)
       # Only reached if overwrite = TRUE OR if the value was NA.
       # Exclude administrative & text variables
-      ITEM_TYPE %in% c("metadata", "administrative", "Open Text") ~ FALSE,
+      ITEM_TYPE %in% c("metadata", "administrative", "Open Text", "module") ~ FALSE,
       # Exclude variables with empty/NA presentation types
       is.na(ITEM_PRESENTATION_TYPE) | ITEM_PRESENTATION_TYPE %in% c("", "NA") ~ FALSE,
       # Exclude variables not asked in the current administration
