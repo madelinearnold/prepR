@@ -4,12 +4,14 @@
 \alias{add_dash_display_flag}
 \title{Flag Variables for Dashboard Display}
 \usage{
-add_dash_display_flag(df, current_admin, overwrite = FALSE)
+add_dash_display_flag(df, admin_to_include = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{df}{The varinfo data frame.}
 
-\item{current_admin}{The ID of the current administration (e.g., "2025").}
+\item{admin_to_include}{Optional vector of admin IDs to include
+(e.g., c( "2024", "2025")). If provided, variables must appear in at least
+one of these admins to be flagged as TRUE.}
 
 \item{overwrite}{Logical. If TRUE, resets all flags based on current logic.
 If FALSE (default), preserves existing TRUE/FALSE flags for existing items.}

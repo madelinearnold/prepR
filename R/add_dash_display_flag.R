@@ -7,19 +7,27 @@
 #' column from \code{update_survey_admin_summaries}.
 #'
 #' @param df The varinfo data frame.
-#' @param current_admin The ID of the current administration (e.g., "2025").
+#' @param admin_to_include Optional vector of admin IDs to include
+#' (e.g., c( "2024", "2025")). If provided, variables must appear in at least
+#' one of these admins to be flagged as TRUE.
 #' @param overwrite Logical. If TRUE, resets all flags based on current logic.
 #'   If FALSE (default), preserves existing TRUE/FALSE flags for existing items.
 #' @return A data frame with a boolean 'DASH_DISPLAY' column.
 #' @family varinfo prep functions
 #' @importFrom dplyr mutate case_when
 #' @export
-add_dash_display_flag <- function(df, current_admin, overwrite = FALSE) {
+add_dash_display_flag <- function(df, admin_to_include = NULL, overwrite = FALSE) {
   # If missing, create it. If it exists, force it to logical.
   if (!"DASH_DISPLAY" %in% names(df)) {
     df$DASH_DISPLAY <- NA
   } else {
     df$DASH_DISPLAY <- as.logical(df$DASH_DISPLAY)
+  }
+
+  # Create a regex pattern to search for admin ids, like "2024|2025"
+  has_admin_filter <- !is.null(admin_to_include) && length(admin_to_include) > 0
+  if (has_admin_filter) {
+    admin_pattern <- paste(admin_to_include, collapse = "|")
   }
 
   df |>
@@ -34,9 +42,9 @@ add_dash_display_flag <- function(df, current_admin, overwrite = FALSE) {
       ITEM_TYPE %in% c("metadata", "administrative", "Open Text", "module") ~ FALSE,
       # Exclude variables with empty/NA presentation types
       is.na(ITEM_PRESENTATION_TYPE) | ITEM_PRESENTATION_TYPE %in% c("", "NA") ~ FALSE,
-      # Exclude variables not asked in the current administration
-      # (Assumes MostRecentSurveyAdmin exists from update_survey_admin_summaries)
-      MostRecentSurveyAdmin != current_admin ~ FALSE,
+      # 3. Admin filter
+      # If a filter is provided, check if AllSurveyAdmin contains ANY of the IDs.
+      has_admin_filter & !stringr::str_detect(AllSurveyAdmin, admin_pattern) ~ FALSE,
 
       # 3. DEFAULT: Otherwise TRUE
       .default = TRUE
