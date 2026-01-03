@@ -32,12 +32,17 @@ sort_varinfo <- function(varinfo, new_info, recency_order) {
 
   varinfo |>
     mutate(
-      # 1. recency priority: metadata is always -1 (top),
+      # 1. recency priority: metadata is negative (top), modules bottom,
       # then rank based on MostRecentSurveyAdmin
       priority = case_when(
-        ITEM_TYPE == "administrative" ~ -2L,
-        ITEM_TYPE == "metadata"       ~ -1L,
+        ITEM_TYPE == "administrative" ~ -5L,
+        ITEM_TYPE == "auth data" ~ -4L,
+        ITEM_TYPE == "metadata"       ~ -3L,
+        ITEM_TYPE == "embedded data" ~ -2L,
+        ITEM_TYPE == "embedded data from panel" ~ -1L,
+        ITEM_TYPE == "module" ~ 999, # modules at the end
         .default = as.integer(recency_rank[MostRecentSurveyAdmin])
+
       ),
 
       # 2. survey index: where did it appear in the current Qualtrics file?
