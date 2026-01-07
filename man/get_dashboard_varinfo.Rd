@@ -20,6 +20,7 @@ and selects a specific subset of columns required by the dashboard.
 Other varinfo prep functions: 
 \code{\link{add_catalog_display_flag}()},
 \code{\link{add_dash_display_flag}()},
+\code{\link{add_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{check_and_export_unmatched}()},
 \code{\link{get_catalog_varinfo}()},

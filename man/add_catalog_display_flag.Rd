@@ -49,6 +49,7 @@ print(catalog_df)
 \seealso{
 Other varinfo prep functions: 
 \code{\link{add_dash_display_flag}()},
+\code{\link{add_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{check_and_export_unmatched}()},
 \code{\link{get_catalog_varinfo}()},

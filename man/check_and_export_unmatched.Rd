@@ -29,6 +29,7 @@ CSV for manual review.
 Other varinfo prep functions: 
 \code{\link{add_catalog_display_flag}()},
 \code{\link{add_dash_display_flag}()},
+\code{\link{add_display_flag}()},
 \code{\link{add_label_metadata}()},
 \code{\link{get_catalog_varinfo}()},
 \code{\link{get_dashboard_varinfo}()},
