@@ -4,17 +4,27 @@
 \alias{get_dashboard_varinfo}
 \title{Slim Varinfo for Export for Dashboard Display}
 \usage{
-get_dashboard_varinfo(df)
+get_dashboard_varinfo(df, display_col = "DASH_DISPLAY")
 }
 \arguments{
 \item{df}{The varinfo data frame.}
+
+\item{display_col}{String. The name of the boolean flag column to filter on.
+Defaults to "DASH_DISPLAY".}
 }
 \value{
 A filtered and column-trimmed tibble.
 }
 \description{
-Filters the varinfo to only include variables marked for dashboard display
-and selects a specific subset of columns required by the dashboard.
+Filters the varinfo to only include variables marked for a specific
+display and selects a specific subset of columns required by the dashboard.
+}
+\examples{
+# Export for Program Dashboard
+dash_export <- get_dashboard_varinfo(varinfo, "DASH_DISPLAY")
+
+# Export for General Dashboards
+general_viz_export <- get_dashboard_varinfo(varinfo, "GENERAL_VIZ_DISPLAY")
 }
 \seealso{
 Other varinfo prep functions: 
