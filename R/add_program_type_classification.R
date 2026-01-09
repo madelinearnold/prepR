@@ -24,7 +24,8 @@ add_program_type_classification <- function(data, program_nm_col, degree_nm_col,
   academic_pgms <- c("Graduate Academic Programs", "Law Academic Programs")
   prof_pgms <- c("Graduate Professional Programs", "Law Professional Programs")
   ss_pgms <- c("Graduate Self-Supporting Pgms", "Law Self-Supporting Programs")
-  other_pgms <- c("Graduate Non-Degree/Non-FinAid", "Law Non-Degree/Non-FinAid")
+  other_pgms <- c("Graduate Non-Degree/Non-FinAid", "Law Non-Degree/Non-FinAid",
+                  "Graduate Certificate")
 
   data |>
     dplyr::mutate(
@@ -41,8 +42,10 @@ add_program_type_classification <- function(data, program_nm_col, degree_nm_col,
 
         .data[[program_nm_col]] %in% ss_pgms ~ "self-supporting",
 
+        .data[[program_nm_col]] %in% other_pgms ~ "other",
+
         is.na(.data[[program_nm_col]]) |
-          .data[[program_nm_col]] %in% other_pgms ~ "other/unknown",
+          .data[[program_nm_col]] == "-" ~ NA_character_,
 
         .default = .data[[program_nm_col]]
       )

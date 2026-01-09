@@ -37,6 +37,11 @@ add_ac_masters_en_route_phd <- function(data, plan2_col, major2_col, degree2_col
   phd_degrees <- c("Doctor of Philosophy", "Joint Doctor of Philosophy", "Juris Scientiae Doctor")
   academic_pgms <- c("Graduate Academic Programs", "Law Academic Programs")
 
+  # Logic check:
+  # 1. Second plan exists and is not a dash
+  # 2. Second major is NA or a dash (indicating it's the same major as plan 1)
+  # 3. Second degree is a PhD type
+  # 4. First program is an Academic program
   data |>
     dplyr::mutate(
       ac_masters_en_route_PhD = dplyr::if_else(
