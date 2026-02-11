@@ -21,6 +21,7 @@ add_program_type_classification <- function(data, program_nm_col, degree_nm_col,
 
   # Define constants for categorization logic
   phd_degrees <- c("Doctor of Philosophy", "Joint Doctor of Philosophy", "Juris Scientiae Doctor")
+  other_degrees <- c("Joint Doctor of Education", "Doctor of Engineering", "Certificate-Graduate Optometry", "Certificate-Educational Single Subject")
   academic_pgms <- c("Graduate Academic Programs", "Law Academic Programs")
   prof_pgms <- c("Graduate Professional Programs", "Law Professional Programs")
   ss_pgms <- c("Graduate Self-Supporting Pgms", "Law Self-Supporting Programs")
@@ -32,12 +33,19 @@ add_program_type_classification <- function(data, program_nm_col, degree_nm_col,
       # The !! (bang-bang) with := allows the output_col string to be the column name
       !!output_col := dplyr::case_when(
         # Use .data[[string]] to reference the column safely
-        .data[[program_nm_col]] %in% academic_pgms &
-          !.data[[degree_nm_col]] %in% phd_degrees ~ "academic masters",
 
+        # academic programs go to doctoral, other, or ac mast based on degree nm
         .data[[program_nm_col]] %in% academic_pgms &
           .data[[degree_nm_col]] %in% phd_degrees ~ "doctoral",
 
+        .data[[program_nm_col]] %in% academic_pgms &
+          (.data[[degree_nm_col]] %in% other_degrees |
+          is.na(.data[[degree_nm_col]])) ~ "other",
+
+        .data[[program_nm_col]] %in% academic_pgms
+        ~ "academic masters",
+
+        # additional program types
         .data[[program_nm_col]] %in% prof_pgms ~ "professional",
 
         .data[[program_nm_col]] %in% ss_pgms ~ "self-supporting",
