@@ -26,7 +26,7 @@ add_age_bands <- function(data, age_col) {
         AGE_BAND == "30-34" ~ "3",
         AGE_BAND == "35-39" ~ "4",
         AGE_BAND == "40 or above" ~ "5",
-        is.na(AGE_BAND) ~ "Unknown"
+        is.na(AGE_BAND) ~ NA_character_
       )
     )
 }
