@@ -30,7 +30,7 @@ add_suppression_flag <- function(summary_df,
       is_strict_active = dplyr::if_any(dplyr::all_of(strict_dimensions), ~ !.x %in% baseline_strings),
       is_pop_active    = dplyr::if_any(dplyr::all_of(pop_dimensions),    ~ !.x %in% baseline_strings),
 
-      PRIMARY_SUPPRESSION_FLAG = dplyr::case_when(
+      SUPPRESSION_FLAG = dplyr::case_when(
         is_strict_active ~ total < threshold_strict,
         is_pop_active    ~ GROUP_PROXY_N < threshold_pop,
         # If neither is strictly active (unlikely given your data structure),
