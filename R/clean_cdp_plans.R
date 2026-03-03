@@ -8,6 +8,9 @@ library(dplyr)
 #' @param map_key The column in cdp_map that matches the academic plan names
 #' @param map_value The column in cdp_map containing the "NonCDP" replacement text
 #'
+#' @return The original data frame with the academic plan column text values updated
+#' @export
+#' @family institutional data prep
 clean_cdp_plans <- function(data,
                             cdp_map,
                             plan_cols = c("Academic Plan Nm - First Plan", "Academic Plan Nm - Second Plan"),

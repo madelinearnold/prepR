@@ -34,6 +34,7 @@ and degree names.
 }
 \seealso{
 Other institutional data prep: 
-\code{\link{add_ac_masters_en_route_phd}()}
+\code{\link{add_ac_masters_en_route_phd}()},
+\code{\link{clean_cdp_plans}()}
 }
 \concept{institutional data prep}

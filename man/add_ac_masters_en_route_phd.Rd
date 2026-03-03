@@ -53,6 +53,7 @@ sample_data |>
 }
 \seealso{
 Other institutional data prep: 
-\code{\link{add_program_type_classification}()}
+\code{\link{add_program_type_classification}()},
+\code{\link{clean_cdp_plans}()}
 }
 \concept{institutional data prep}

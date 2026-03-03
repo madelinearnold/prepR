@@ -23,6 +23,15 @@ clean_cdp_plans(
 
 \item{map_value}{The column in cdp_map containing the "NonCDP" replacement text}
 }
+\value{
+The original data frame with the academic plan column text values updated
+}
 \description{
 Map and Clean CDP Plans
 }
+\seealso{
+Other institutional data prep: 
+\code{\link{add_ac_masters_en_route_phd}()},
+\code{\link{add_program_type_classification}()}
+}
+\concept{institutional data prep}
